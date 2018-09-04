@@ -1,8 +1,10 @@
 package data.array;
 
 
-import org.omg.CosNaming.BindingIteratorOperations;
-
+/**
+ * 自定义数组
+ * @param <E>
+ */
 public class Array<E> {
 
     private E[] data;
