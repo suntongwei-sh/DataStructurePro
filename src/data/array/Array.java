@@ -3,6 +3,7 @@ package data.array;
 
 /**
  * 自定义数组
+ *
  * @param <E>
  */
 public class Array<E> {
@@ -11,7 +12,7 @@ public class Array<E> {
     private int size;
 
     public Array(int capacity) {
-        data =(E[]) new Object[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -44,12 +45,25 @@ public class Array<E> {
 
     //任意位置插入
     public boolean add(int index, E e) {
+        if (index < 0 || index > size)
+            throw new RuntimeException("index 非法");
+        if (size == data.length)
+            resize(data.length * 2);
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
         data[index] = e;
         size++;
         return true;
+    }
+
+    //扩容
+    private void resize(int newcapacity) {
+        E[] newData = (E[]) new Object[newcapacity];
+        for (int i = 0; i < data.length; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
     public boolean add(E e) {
@@ -61,6 +75,7 @@ public class Array<E> {
     public E get(int index) {
         return data[index];
     }
+
     //打印有效元素
     @Override
     public String toString() {
@@ -101,6 +116,9 @@ public class Array<E> {
         }
         size--;
         data[size] = null;
+        //删除时适当的缩小数组长度
+        if (size == data.length / 4 && data.length / 2 != 0)//确保长度至少为2,不能为0
+            resize(data.length / 2);
         return item;
     }
 
