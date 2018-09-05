@@ -3,6 +3,8 @@ package data.array;
 
 /**
  * 自定义数组
+ * 动态性质
+ * 任意类型(泛型)
  *
  * @param <E>
  */
@@ -75,7 +77,12 @@ public class Array<E> {
     public E get(int index) {
         return data[index];
     }
-
+    public E getFirst(){
+        return get(0);
+    }
+    public E getLast(){
+        return get(size-1);
+    };
     //打印有效元素
     @Override
     public String toString() {
