@@ -1,5 +1,10 @@
 package data.stack;
 
+/**
+ * 栈
+ * 接口,定义基本操作
+ * @param <E>
+ */
 public interface Stack<E> {
 
     int getSize();

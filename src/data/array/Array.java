@@ -10,11 +10,11 @@ package data.array;
  */
 public class Array<E> {
 
-    private E[] data;
+    private Object[] data;
     private int size;
 
     public Array(int capacity) {
-        data = (E[]) new Object[capacity];
+        data =  new Object[capacity];
         size = 0;
     }
 
@@ -61,7 +61,7 @@ public class Array<E> {
 
     //扩容
     private void resize(int newcapacity) {
-        E[] newData = (E[]) new Object[newcapacity];
+        Object[] newData = new Object[newcapacity];
         for (int i = 0; i < data.length; i++) {
             newData[i] = data[i];
         }
@@ -75,7 +75,7 @@ public class Array<E> {
     }
 
     public E get(int index) {
-        return data[index];
+        return (E)data[index];
     }
     public E getFirst(){
         return get(0);
@@ -117,7 +117,7 @@ public class Array<E> {
 
     //删除任意位置,返回元素
     public E remove(int index) {
-        E item = data[index];
+        E item =(E) data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
