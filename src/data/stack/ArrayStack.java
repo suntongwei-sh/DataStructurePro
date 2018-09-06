@@ -68,7 +68,7 @@ public class ArrayStack<E> implements Stack<E> {
             if (i != array.size() - 1)
                 stringBuilder.append(",");
         }
-        stringBuilder.append("] top");
+        stringBuilder.append("] ->top");
         return stringBuilder.toString();
     }
 }
