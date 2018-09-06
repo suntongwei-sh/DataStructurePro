@@ -10,8 +10,6 @@ import data.array.Array;
 public class ArrayStack<E> implements Stack<E> {
     //存数据
     private Array<E> array;
-    //大小
-    private int size;
 
     //有参构造(指定容量)
     public ArrayStack(int capacity) {
