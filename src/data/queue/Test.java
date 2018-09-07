@@ -13,5 +13,7 @@ public class Test {
         integerArrayQueue.deQueue();
         System.out.println(integerArrayQueue);
         System.out.println(integerArrayQueue.getFront());
+
+
     }
 }
