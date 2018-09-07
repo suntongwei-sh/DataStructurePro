@@ -1,4 +1,8 @@
 package data.tree;
 
-public class Tree {
+/**
+ * 树 结构
+ * @param <E>
+ */
+public class Tree<E> {
 }
