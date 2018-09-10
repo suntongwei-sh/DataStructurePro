@@ -13,7 +13,7 @@ public class Main {
             System.out.println(item);
         }
         /**引用类型数组,初始化null **/
-        Integer[] integers = new Integer[10];
+        Integer[] integers = new Integer[3];
         for (Integer integer : integers) {
             System.out.println(integer);
         }

@@ -2,9 +2,10 @@ package data.queue;
 
 
 public class LinkedListQueue<E> implements Queue<E> {
-
+    //只操作头结点 尾节点
+    //因此定义head tail两个节点
     private Node head, tail;
-
+    //大小
     private int size;
 
     public LinkedListQueue() {
