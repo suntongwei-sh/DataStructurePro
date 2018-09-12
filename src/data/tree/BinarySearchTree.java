@@ -12,11 +12,18 @@ import java.util.Stack;
  *  *      小于右子树的所有节点的值
  *      如果有重复元素,不做任何操作
  *  2.每一颗子树也是二分搜索树
- *  3.存储的元素具有可比性(为了存储结构)
+ *  3.存储的元素具有可比性(为了存储结构)(E extends Comparable<E>)
  *
  * 一直往左走,一定是最小值
  * 往右走,一定最大值
  *
+ */
+
+/**
+ * 复杂度  n 元素个数
+ * O(h)   h  树的高度
+ * 平均(满树)   O(log(n))
+ * 最差(退化成链表)   O(n)
  */
 public class BinarySearchTree<E extends Comparable<E>> {
     private Node root;//根节点
@@ -301,9 +308,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
         //递归插入新元素
         if (e.compareTo(node.e) < 0) {
-            //链接新创建的节点
+            //链接新创建的节点(左子树)
             node.left = add(node.left, e);
         } else if (e.compareTo(node.e) > 0) {//e.compareTo(node.e) > 0
+            //链接新创建的节点(又子树)
             node.right = add(node.right, e);
         }
         return node;

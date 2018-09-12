@@ -2,7 +2,7 @@ package data.linked;
 
 /**
  * 单向链表
- *
+ * <p>
  * 对链表头部操作很快速(增删改查),很方便实现栈结构O(1)
  */
 public class LinkedList<E> {
@@ -51,6 +51,25 @@ public class LinkedList<E> {
 
     public E removeLast() {
         return remove(size - 1);
+    }
+
+    // 从链表中删除元素e
+    public void removeElement(E e) {
+
+        Node prev = dummyHead;
+        //先定位到要删除节点的前驱节点
+        while (prev.next != null) {
+            if (prev.next.data.equals(e))
+                break;
+            prev = prev.next;
+        }
+        //删除逻辑
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+            size--;
+        }
     }
 
     /**
@@ -170,8 +189,8 @@ public class LinkedList<E> {
         return sb.toString();
     }
 
-    public boolean isEmpty(){
-        return size==0;
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     /**
