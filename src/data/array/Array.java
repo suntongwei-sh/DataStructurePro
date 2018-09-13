@@ -143,4 +143,17 @@ public class Array<E> {
             remove(i);
         return;
     }
+
+    /**
+     * 两个位置交换值
+     * @param i
+     * @param j
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size)
+            throw new IllegalArgumentException("index illegal");
+        E temp = (E) data[i];
+        data[i] = data[j];
+        data[j] = temp;
+    }
 }
