@@ -7,7 +7,7 @@ import data.tree.BinarySearchTree;
  * 忽略重复元素
  * @param <E>
  */
-public class BSTSet<E extends Comparable> implements Set<E> {
+public class BSTSet<E extends Comparable<E>> implements Set<E> {
     private BinarySearchTree bst;
 
     public BSTSet() {

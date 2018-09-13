@@ -287,12 +287,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
      */
 
     public void add(E e){
-        if (null==root){
-            root=new Node(e);
-            size++;
-        }else
+//        if (null==root){
+//            root=new Node(e);
+//            size++;
+//        }else
             //递归操作插入新元素
-            add(root,e);
+            root=  add(root,e);
     }
 
     /**
