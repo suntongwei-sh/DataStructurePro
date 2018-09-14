@@ -1,6 +1,12 @@
 package data.heap;
 
-import java.util.*;
+
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class Solution {
     /**
@@ -50,7 +56,7 @@ public class Solution {
                 freqPriorityQueue.enQueue(new Freq(key, treeMap.get(key)));
             }
         }
-        LinkedList<Integer> integers = new LinkedList<Integer>();
+        List<Integer> integers = new LinkedList<Integer>();
         //依次出队
         while (!freqPriorityQueue.isEmpty()) {
             integers.add(freqPriorityQueue.deQueue().e);
@@ -60,7 +66,18 @@ public class Solution {
 
     public static void main(String[] args) {
         //jdk 的优先队列<内部使用的是最小堆>
-        java.util.PriorityQueue<Integer> pq=new java.util.PriorityQueue();
+        PriorityQueue<Integer> pq = new PriorityQueue();
+        //可以传入比较器自定义 Comparator<? super E> comparator;
+        //更加的灵活
+        new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
+        };
+
 
     }
+
+
 }
