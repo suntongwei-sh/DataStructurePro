@@ -27,6 +27,42 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
+     * 将最大元素替换成 e
+     *
+     * @param e
+     */
+    public E replace(E e) {
+        if (!isEmpty()) {
+            E ret = findMax();
+            //根节点值更新
+            data.set(0, e);
+            //下沉操作,以满足堆性质
+            siftDown(0);
+            return ret;
+        }
+        return null;
+    }
+
+    /**
+     * 任意数组转换成 满足堆结构的
+     *
+     * @param array
+     */
+    /**两种方式:
+     * 1.重新构造一个满足的数组(将元素添加到空堆) O(nlog(n))
+     * 2.基于现有数组,进行上浮,下沉操作,以满足堆 O(n)   --更加的高效率
+     */
+    public MaxHeap(E[] array) {
+        //heapify 过程
+        Array newArr = new Array(array);
+        //从最后一个节点的父节点开始下沉操作(从下层->上层)
+        for (int i = parent(array.length - 1); i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
+
+    /**
      * 向堆中添加元素
      * <p>
      * sift up 元素的上浮现象
@@ -41,6 +77,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * 元素上浮操作
+     * 循环操作
      *
      * @param k
      */
@@ -72,7 +109,13 @@ public class MaxHeap<E extends Comparable<E>> {
         return max;
     }
 
+    /**
+     * 元素下沉操作
+     *循环操作
+     * @param k
+     */
     private void siftDown(int k) {
+        //对于完全二叉树,是优先排在左节点的,如果左节点也没有,那右节点肯定不存在
         //比父节点值大,就交换位置
         while (leftChild(k) < data.size()) {//防止左孩子不存在
             //默认最大值的索引是左孩子索引
@@ -137,5 +180,9 @@ public class MaxHeap<E extends Comparable<E>> {
 
     public boolean isEmpty() {
         return data.isEmpty();
+    }
+    @Override
+    public String toString(){
+        return data.toString();
     }
 }

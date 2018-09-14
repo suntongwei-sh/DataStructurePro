@@ -22,6 +22,14 @@ public class Array<E> {
         this(10);
     }
 
+    public Array(E[] arr) {
+        data = new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+            size++;
+        }
+    }
+
     public int getCapacity() {
         return data.length;
     }
@@ -43,6 +51,17 @@ public class Array<E> {
 
     public boolean addFirst(E e) {
         return this.add(0, e);
+    }
+
+    /**
+     *更新索引对应的值
+     * @param index
+     * @param e
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index > getCapacity())
+            throw new RuntimeException("index 非法");
+        data[index] = e;
     }
 
     //任意位置插入
